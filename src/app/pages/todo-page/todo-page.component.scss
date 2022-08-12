@@ -1,0 +1,163 @@
+
+$primary-color: #4d4d4d;
+$primary-color-light: #d9d9d9;
+$primary-color-dark: #777777;
+
+
+h1 {
+    font-size: 75px;
+    font-weight: 100;
+    line-height: 1.4em;
+
+    color: #af2f2f26;
+}
+
+.no-opacity {
+    opacity: 0;
+}
+
+.form-input {
+    padding: 16px;
+    padding-left:4px;
+
+    i {
+        font-size: 24px;
+        color: $primary-color-light;
+        padding: 8px;
+    }
+
+    input {
+        padding-left: 16px;
+    }
+}
+
+.form-input input {
+    font-size: 20px;
+    color: $primary-color;
+    
+    &::placeholder{
+        color: $primary-color-light; 
+        font-style: italic;
+    }
+
+    
+}
+
+.todo-panel {
+
+    padding: 14px;
+    border-top: 1px solid #ededed;
+    position: relative;
+
+    
+    &:hover .checkmark .close-icon {
+        opacity: 1;
+    }
+
+    .todo-checkbox {
+        cursor: pointer;
+        height: 0px;
+        width: 0px;
+    }
+
+    .checkmark {
+        
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 100%;
+
+        label {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: transparent;
+            border-radius: 25px;
+            border: 1px solid $primary-color-light;
+        }
+
+        i {
+            opacity: 0;
+        }
+
+        .close-icon {
+            color: #ff000074;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: auto;
+
+            &:hover {
+            color: #ff0000;
+            transition: all 1s;  
+            }
+        }
+
+        .checked-icon {            
+            color: #00b300;
+            margin-left: -4px;
+            font-size: 1.1rem;
+        }
+
+        input:checked ~ .todo-text {
+            text-decoration: line-through;
+            color: $primary-color-light;
+        }
+
+        input:checked ~ .checked-icon {
+            opacity: 1;
+        }        
+    }
+    
+    .todo-text {
+        font-size: 20px;
+        color: $primary-color;
+        padding-left: 26px;
+    }
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+
+    border-top: 1px solid $primary-color-light;
+
+    p {
+        font-size: 0.7rem;
+        color: $primary-color-dark;
+    }
+    
+
+
+    div {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+
+        p {
+            border: 1px solid transparent;
+            border-radius: 3px;
+            padding: 2px 5px;
+            cursor: pointer;
+        }
+    
+        p:hover {
+            border: 1px solid #77777774;
+        }
+    }
+
+}
+
+.filter-selected {
+    border: 1px solid $primary-color !important;
+    border-radius: 3px;
+    padding: 2px 5px;
+}
+
+.clear-complete:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

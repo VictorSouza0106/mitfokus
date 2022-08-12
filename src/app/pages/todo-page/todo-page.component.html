@@ -1,0 +1,29 @@
+<div class="container-flex center flex-column">
+    <h1>todos</h1>
+    <div class="card">
+        <div class="form-input">
+            <form [formGroup]="form">
+                <i [ngClass]="{'no-opacity': !hasTodoItem()}" class="mdi mdi-chevron-down" (click)="checkAll()"></i>
+                <input formControlName="inputText" maxlength="50" placeholder="What needs to be done?" type="text">
+            </form>
+        </div>
+        <div class="todo-panel" *ngFor="let todo of filteredTodos, let i=index">
+            <div class="checkmark">
+                <input (change)="checkChange(i)" [id]="'check' + i" class="todo-checkbox" type="checkbox" [(ngModel)]="todo.complete" [checked]="todo.complete">
+                <i class="mdi mdi-check checked-icon"></i>
+                <label [for]="'check' + i"></label>
+                <span class="todo-text">{{todo.text}}</span>
+                <i class="mdi mdi-close close-icon" (click)="removeItem(todo)"></i>
+            </div>
+        </div>
+        <div *ngIf="showFilters()" class="filters">
+            <p>{{itemLeft}} item left</p>
+            <div>
+                <p [ngClass]="{'filter-selected': selectedFilter === 'ALL'}" (click)="setFilter('ALL')">All</p>
+                <p [ngClass]="{'filter-selected': selectedFilter === 'ACTIVE'}" (click)="setFilter('ACTIVE')">Active</p>
+                <p [ngClass]="{'filter-selected': selectedFilter === 'COMPLETED'}" (click)="setFilter('COMPLETED')">Completed</p>
+            </div>
+            <p [ngClass]="{'no-opacity': !hasCheckedTodo()}" class="clear-complete" (click)="removeChecked()">Clear Completed</p>
+        </div>
+    </div>
+</div>
